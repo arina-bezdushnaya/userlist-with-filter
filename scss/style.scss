@@ -1,0 +1,81 @@
+@import 'variables.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(45deg, $color_1, $color_2);
+  background-attachment: fixed;
+}
+
+tr {
+  vertical-align: middle;
+  background-color: $color_3;
+  color: $color_4;
+  &:nth-child(odd) {
+    background-color: $color_5;
+  }
+}
+
+td, th {
+  padding: 0.8em 1.7em;
+  text-align: left;
+}
+
+%fontstyle { 
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+%fieldstyle { 
+  display: block;
+  padding: 0.8em 1.7em;
+  border-radius: 1em;
+  border: none;
+}
+
+th {
+  background-color: $color_6;
+  @extend %fontstyle;
+  color: #fff;
+}
+
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+.userlist {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  &__search {
+    width: 70%;
+    background: $color_7;
+    color: $color_8;
+    @extend %fontstyle;
+    @extend %fieldstyle;
+    &::placeholder {
+      color: $color_6;
+    }
+  }
+  &__reset {
+    width: 29%;
+    @extend %fontstyle;
+    @extend %fieldstyle;
+    background: $color_9;
+    cursor: pointer;
+  }
+}

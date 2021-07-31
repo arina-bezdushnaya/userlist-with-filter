@@ -50,7 +50,7 @@ const  fillUserlistRequiredInfo = async ()=> {
   const userlist = [];
   userData.forEach(user => {
     const userInfo = new person(user);
-    userlist.push(userInfo); 
+    userlist.push(userInfo);
   });
 
   //pass an initial array and input value to filter
@@ -61,7 +61,7 @@ const  fillUserlistRequiredInfo = async ()=> {
   }, 1000));
 
   //reset input field and display an initial data in the table
-  buttonReset.addEventListener("click", function() { 
+  buttonReset.addEventListener("click", function() {
     displayUserlist(userlist);
     filterNameInput.value = "";
   });
@@ -84,7 +84,7 @@ const displayUserlist = (userlist) => {
     const userEmailInsert = tableRow.appendChild(document.createElement("td"));
     const userPhoneInsert = tableRow.appendChild(document.createElement("td"));
     const userRegisteredDateInsert = tableRow.appendChild(document.createElement("td"));
-    
+
     usernameInsert.innerHTML = user.username;
     userPictureThumbnail.src = user.userPictureThumbnail;
     userPictureTooltip.src = user.userPictureTooltip;
@@ -93,7 +93,7 @@ const displayUserlist = (userlist) => {
     userEmailInsert.innerHTML = user.userEmail;
     userPhoneInsert.innerHTML = user.userPhone;
     userRegisteredDateInsert.innerHTML = user.userRegisteredDate;
-  
+
     //pass image elements to the tooltip as parameters
     showTooltip(userPictureThumbnail, userPictureTooltip);
   })
