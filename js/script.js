@@ -1,6 +1,9 @@
 const userlist = document.querySelector("tbody");
 const buttonReset = document.querySelector("button");
 const form = document.querySelector("form");
+const indicator = document.querySelector(".loading-indicator");
+const filter = document.querySelector(".filter");
+const userTable = document.querySelector(".wrapper");
 
 
 
@@ -31,7 +34,6 @@ const getUserlist = async () => {
 
 //use json object to separate an array included all users
 //create an instance for all array elements and insert user info into html-tags
-
 async function displayUserlist(){
 
   const users = await getUserlist();
@@ -61,5 +63,14 @@ async function displayUserlist(){
 
 };
 
-//add data to the table
-displayUserlist();
+
+/*add loading indicator,
+data from server load fast enough so add artificial delay to show indicator
+and then show data in the table*/
+window.addEventListener("load", function() {
+  displayUserlist();
+  this.setTimeout(() => {
+    indicator.style.display = "none";
+    userTable.style.display = "block";
+  }, 1000);
+});

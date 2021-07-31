@@ -46,12 +46,13 @@ th {
 }
 
 .wrapper {
+  display: none;
   width: 1200px;
   margin: 0 auto;
   padding: 2em;
 }
 
-.userlist {
+.user-table {
   width: 100%;
   border-collapse: collapse;
   border-radius: 1em;
@@ -77,5 +78,16 @@ th {
     @extend %fieldstyle;
     background: $color_9;
     cursor: pointer;
+  }
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  & img {
+    width: 300px;
   }
 }
