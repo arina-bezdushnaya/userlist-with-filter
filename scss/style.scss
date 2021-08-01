@@ -91,3 +91,10 @@ th {
     width: 300px;
   }
 }
+
+.error-message {
+  padding: 30px;
+  background: transparent;
+  text-align: center;
+  @extend %fontstyle;
+}
