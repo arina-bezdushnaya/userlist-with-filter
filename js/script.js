@@ -105,9 +105,21 @@ window.addEventListener("load", function() {
 });
 
 
+// error appears when filter found nothing
+const showError = () => {
+  const errorMessage = userlistDisplayed.appendChild(document.createElement("tr")).appendChild(document.createElement("td"));
+  errorMessage.colSpan = "6";
+  errorMessage.className = "error-message";
+  errorMessage.innerHTML = "Nothing Found";
+}
+
 // implement filter by username
 // filter takes an initial array and input value and then table is updated
 const filterUserlist = (userlist, filterName) => {
-  const findname = userlist.filter(user => user.username.toLowerCase().indexOf(filterName) != -1);
-  displayUserlist(findname);
+  const filteredList = userlist.filter(user => user.username.toLowerCase().indexOf(filterName) != -1)
+  displayUserlist(filteredList);
+
+  if(filteredList.length === 0) {
+    showError();
+  }
 };
