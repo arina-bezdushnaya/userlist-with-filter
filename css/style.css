@@ -27,7 +27,7 @@ td, th {
   text-align: left;
 }
 
-th, .filter__search, .filter__reset {
+th, .filter__search, .filter__reset, .error-message {
   font-weight: 400;
   font-size: 1.2em;
 }
@@ -42,6 +42,10 @@ th, .filter__search, .filter__reset {
 th {
   background-color: #36304a;
   color: #fff;
+}
+
+img {
+  border-radius: 3px;
 }
 
 .wrapper {
@@ -114,5 +118,17 @@ th {
 
 .loading-indicator img {
   width: 300px;
+}
+
+.error-message {
+  padding: 30px;
+  background: transparent;
+  text-align: center;
+}
+
+.tooltip {
+  position: absolute;
+  visibility: hidden;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */
