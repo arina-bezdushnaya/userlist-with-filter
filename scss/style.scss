@@ -45,6 +45,10 @@ th {
   color: #fff;
 }
 
+img {
+  border-radius: 3px;
+}
+
 .wrapper {
   display: none;
   width: 1200px;
@@ -97,4 +101,10 @@ th {
   background: transparent;
   text-align: center;
   @extend %fontstyle;
+}
+
+.tooltip {
+  position: absolute;
+  visibility: hidden;
+  border-radius: 5px;
 }
