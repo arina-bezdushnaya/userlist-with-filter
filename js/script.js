@@ -12,7 +12,8 @@ const filterNameInput = document.querySelector("input");
 const person = class User {
   constructor(user) {
     this.username = `${user.name.first} ${user.name.last}`;
-    this.userPicture = user.picture.thumbnail;
+    this.userPictureThumbnail = user.picture.thumbnail;
+    this.userPictureTooltip = user.picture.large;
     this.userLocation = `${user.location.state} ${user.location.city}`;
     this.userEmail = user.email;
     this.userPhone = user.phone;
@@ -74,22 +75,27 @@ const  fillUserlistRequiredInfo = async ()=> {
 const displayUserlist = (userlist) => {
   userlistDisplayed.innerHTML = "";
   userlist.forEach(user => {
-    const trCreate = userlistDisplayed.appendChild(document.createElement("tr"));
-
-    const usernameInsert = trCreate.appendChild(document.createElement("td"));
-    const userPictureInsert = trCreate.appendChild(document.createElement("td")).appendChild(document.createElement("img"));
-    const userLocationInsert = trCreate.appendChild(document.createElement("td"));
-    const userEmailInsert = trCreate.appendChild(document.createElement("td"));
-    const userPhoneInsert = trCreate.appendChild(document.createElement("td"));
-    const userRegisteredDateInsert = trCreate.appendChild(document.createElement("td"));
+    const tableRow = userlistDisplayed.appendChild(document.createElement("tr"));
+    const usernameInsert = tableRow.appendChild(document.createElement("td"));
+    const userPictureInsert = tableRow.appendChild(document.createElement("td"));
+    const userPictureThumbnail = userPictureInsert.appendChild(document.createElement("img"));
+    const userPictureTooltip = userPictureInsert.appendChild(document.createElement("img"));
+    const userLocationInsert = tableRow.appendChild(document.createElement("td"));
+    const userEmailInsert = tableRow.appendChild(document.createElement("td"));
+    const userPhoneInsert = tableRow.appendChild(document.createElement("td"));
+    const userRegisteredDateInsert = tableRow.appendChild(document.createElement("td"));
     
     usernameInsert.innerHTML = user.username;
-    userPictureInsert.src = user.userPicture;
+    userPictureThumbnail.src = user.userPictureThumbnail;
+    userPictureTooltip.src = user.userPictureTooltip;
+    userPictureTooltip.className = "tooltip";
     userLocationInsert.innerHTML = user.userLocation;
     userEmailInsert.innerHTML = user.userEmail;
     userPhoneInsert.innerHTML = user.userPhone;
     userRegisteredDateInsert.innerHTML = user.userRegisteredDate;
   
+    //pass image elements to the tooltip as parameters
+    showTooltip(userPictureThumbnail, userPictureTooltip);
   })
 };
 
@@ -123,3 +129,14 @@ const filterUserlist = (userlist, filterName) => {
     showError();
   }
 };
+
+
+// tooltip appears when you hover your cursor over a thumbnail and dissappear when mouse is out
+const showTooltip = (userPictureThumbnail, userPictureTooltip) => {
+  userPictureThumbnail.onmouseover =  function() {
+    userPictureTooltip.style.visibility = "visible";
+  };
+  userPictureThumbnail.onmouseout =  function() {
+    userPictureTooltip.style.visibility = "hidden";
+  };
+}
