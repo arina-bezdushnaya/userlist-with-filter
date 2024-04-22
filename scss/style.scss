@@ -17,6 +17,7 @@ tr {
   vertical-align: middle;
   background-color: $color_3;
   color: $color_4;
+
   &:nth-child(odd) {
     background-color: $color_5;
   }
@@ -27,12 +28,12 @@ td, th {
   text-align: left;
 }
 
-%fontstyle { 
+@mixin fontstyle {
   font-weight: 400;
   font-size: 1.2em;
 }
 
-%fieldstyle { 
+@mixin fieldstyle {
   display: block;
   padding: 0.8em 1.7em;
   border-radius: 1em;
@@ -41,8 +42,9 @@ td, th {
 
 th {
   background-color: $color_6;
-  @extend %fontstyle;
   color: #fff;
+
+  @include fontstyle;
 }
 
 img {
@@ -66,22 +68,28 @@ img {
 .filter {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
+
   &__search {
     width: 70%;
     background: $color_7;
     color: $color_8;
-    @extend %fontstyle;
-    @extend %fieldstyle;
+
+    @include fontstyle;
+    @include fieldstyle;
+
     &::placeholder {
       color: $color_6;
     }
   }
+
   &__reset {
     width: 29%;
-    @extend %fontstyle;
-    @extend %fieldstyle;
     background: $color_9;
     cursor: pointer;
+
+    @include fontstyle;
+    @include fieldstyle;
   }
 }
 
@@ -91,6 +99,7 @@ img {
   justify-content: center;
   align-items: center;
   height: 100vh;
+
   & img {
     width: 300px;
   }
@@ -100,7 +109,8 @@ img {
   padding: 30px;
   background: transparent;
   text-align: center;
-  @extend %fontstyle;
+
+  @include fontstyle;
 }
 
 .tooltip {
